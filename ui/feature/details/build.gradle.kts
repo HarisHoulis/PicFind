@@ -11,6 +11,8 @@ dependencies {
     implementation(projects.core.coroutines)
     implementation(projects.core.domain)
     implementation(projects.ui.common.mvi)
+    implementation(projects.ui.common.navigation)
+    implementation(projects.ui.common.savedState)
 
     testImplementation(projects.ui.common.testutil)
 }

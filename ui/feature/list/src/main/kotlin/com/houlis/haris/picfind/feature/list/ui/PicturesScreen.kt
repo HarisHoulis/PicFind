@@ -24,6 +24,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -59,18 +60,19 @@ internal fun PicturesRoute(
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
-//    uiState.navigateToDetails?.run {
-//        navigateToDetails(picId)
-//        viewModel.onNavigatedToDetails()
-//    }
+    state.navigateToDetails?.let { pic ->
+        LaunchedEffect(pic) {
+            viewModel.onNavigated()
+            navigateToDetails(pic.id)
+        }
+    }
 
     PicturesScreen(
-        state,
-        modifier,
-        { viewModel.onPictureClicked(it) }
-    ) {
-        viewModel.searchFor(it)
-    }
+        state = state,
+        modifier = modifier,
+        onClick = viewModel::onPictureClicked,
+        onValueChange = viewModel::searchFor
+    )
 }
 
 @Composable

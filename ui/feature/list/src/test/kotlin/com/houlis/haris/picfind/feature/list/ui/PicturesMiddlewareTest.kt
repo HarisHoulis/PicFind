@@ -30,19 +30,20 @@ internal class PicturesMiddlewareTest {
     private val testDispatcher = TestDispatcher<PicturesAction>()
 
     private fun sut(debounce: Duration = Duration.ofMillis(100)) = PicturesMiddleware(
-        FakePicturesRepository(),
-        debounce,
-        testDispatcher,
-        closeableScope
+        repository = FakePicturesRepository(),
+        inputDebounce = debounce,
+        dispatcher = testDispatcher,
+        scope = closeableScope
     )
 
     @Test
     fun `debounces multiple queries`() = coroutineScope.runTest {
         val expectedPictures = persistentListOf(dummyPicture3(), dummyPicture4())
-        val sut = sut()
 
-        sut.process(PicturesState(), SearchFor(Query1.text))
-        sut.process(PicturesState(), SearchFor(Query2.text))
+        with(sut()) {
+            process(PicturesState(), SearchFor(Query1.text))
+            process(PicturesState(), SearchFor(Query2.text))
+        }
 
         testDispatcher.actionFlow.test {
             expectThat(awaitItem()).isEqualTo(PicturesLoaded(expectedPictures))

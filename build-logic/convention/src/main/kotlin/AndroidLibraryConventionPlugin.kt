@@ -1,5 +1,6 @@
 import com.android.build.api.dsl.LibraryExtension
 import com.houlis.haris.picfind.configureKotlinAndroid
+import com.houlis.haris.picfind.configurePackagingResources
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
@@ -16,13 +17,8 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
 
             extensions.configure<LibraryExtension> {
                 configureKotlinAndroid(this)
+                configurePackagingResources()
                 compileSdk = 34
-                packaging {
-                    resources {
-                        excludes.add("META-INF/LICENSE.md")
-                        excludes.add("META-INF/LICENSE-notice.md")
-                    }
-                }
             }
 
             dependencies {

@@ -49,6 +49,7 @@ androidx-lifecycle-lifecycle-runtime-compose = { module = "androidx.lifecycle:li
 androidx-lifecycle-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "androidx-lifecycle-version" }
 androidx-lifecycle-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "androidx-lifecycle-version" }
 androidx-navigation-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "androidx-navigation-navigation-compose-version" }
+androidx-navigation-navigation-testing = { module = "androidx.navigation:navigation-testing", version.ref = "androidx-navigation-navigation-compose-version" }
 androidx-test-core = { module = "androidx.test:core", version.ref = "androidx-test-core-version" }
 androidx-test-ext-junit-ktx = { module = "androidx.test.ext:junit-ktx", version.ref = "androidx-test-ext-junit-ktx-version" }
 androidx-test-rules = { module = "androidx.test:rules", version.ref = "androidx-test-rules-version" }
@@ -95,7 +96,9 @@ android-test = [
     "androidx-test-rules",
     "androidx-test-runner",
     "com-google-dagger-hilt-android-testing",
-    "androidx-test-ext-junit"
+    "androidx-test-ext-junit",
+    "androidx-navigation-navigation-testing",
+    "io-strikt-strikt-core",
 ]
 compose = [
     "androidx-compose-material-material-icons-extended",
