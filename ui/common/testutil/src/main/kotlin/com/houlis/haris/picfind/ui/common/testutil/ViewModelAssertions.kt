@@ -11,7 +11,7 @@ import strikt.assertions.isEqualTo
 
 fun <S : State, A : Action, VM : MviViewModel<S, A>> VM.assertStatesFor(
     vararg expectedStates: S,
-    f: VM.() -> Unit,
+    f: VM.() -> Unit = {},
 ) {
     runTest {
         state.test {

@@ -14,8 +14,8 @@ import java.time.Duration
 @InstallIn(ViewModelComponent::class)
 internal object PicturesModule {
 
-    @Provides
     @ViewModelScoped
+    @Provides
     fun providesInputDebounceDuration(): Duration = Duration.ofMillis(500)
 
     @ViewModelScoped
@@ -27,7 +27,12 @@ internal object PicturesModule {
     ): MwProvider<PicturesState, PicturesAction> =
         MwProvider { dispatcher ->
             listOf(
-                PicturesMiddleware(repository, debounce, dispatcher, scope)
+                PicturesMiddleware(
+                    repository = repository,
+                    inputDebounce = debounce,
+                    dispatcher = dispatcher,
+                    scope = scope
+                )
             )
         }
 }
