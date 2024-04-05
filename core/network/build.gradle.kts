@@ -1,9 +1,9 @@
 plugins {
-    alias(libs.plugins.org.jetbrains.kotlin.plugin.serialization)
-    id("android.lib")
-    id("android.hilt")
+    id("picfind.android.library")
+    id("picfind.android.hilt")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
-    id("kotlin.test")
+    id("picfind.kotlin.test")
+    alias(libs.plugins.org.jetbrains.kotlin.plugin.serialization)
 }
 
 android {

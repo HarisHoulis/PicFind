@@ -14,8 +14,8 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             with(pluginManager) {
-                apply("android.lib")
-                apply("android.hilt")
+                apply("picfind.android.library")
+                apply("picfind.android.hilt")
             }
 
             extensions.configure<LibraryExtension> {

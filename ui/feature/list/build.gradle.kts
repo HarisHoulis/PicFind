@@ -1,6 +1,6 @@
 plugins {
-    id("android.feature")
-    id("android.test")
+    id("picfind.android.feature")
+    id("picfind.android.test")
 }
 
 android {

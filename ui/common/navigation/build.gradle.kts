@@ -1,8 +1,8 @@
 plugins {
-    id("android.lib")
-    id("android.test")
-    id("kotlin.test")
-    id("android.hilt")
+    id("picfind.android.library")
+    id("picfind.android.test")
+    id("picfind.kotlin.test")
+    id("picfind.android.hilt")
 }
 
 android {

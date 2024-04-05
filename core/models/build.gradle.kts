@@ -1,5 +1,5 @@
 plugins {
-    id("android.lib")
+    id("picfind.android.library")
     alias(libs.plugins.org.jetbrains.kotlin.plugin.serialization)
 }
 

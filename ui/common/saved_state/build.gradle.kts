@@ -1,6 +1,6 @@
 plugins {
-    id("android.lib")
-    id("android.hilt")
+    id("picfind.android.library")
+    id("picfind.android.hilt")
 }
 
 android {

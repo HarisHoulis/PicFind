@@ -1,8 +1,8 @@
 plugins {
-    id("android.lib")
-    id("android.hilt")
+    id("picfind.android.library")
+    id("picfind.android.hilt")
+    id("picfind.kotlin.test")
     alias(libs.plugins.org.jetbrains.kotlin.plugin.serialization)
-    id("kotlin.test")
 }
 
 android {

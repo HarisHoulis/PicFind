@@ -9,7 +9,7 @@ class AndroidTestConventionPlugin : Plugin<Project> {
         with(target) {
             with(pluginManager) {
                 apply("org.jetbrains.kotlin.android")
-                apply("kotlin.test")
+                apply("picfind.kotlin.test")
             }
 
             dependencies {
@@ -23,7 +23,7 @@ class AndroidTestConventionPlugin : Plugin<Project> {
                 add("androidTestImplementation", kotlin("test"))
                 add("androidTestImplementation", platform(libs.findLibrary("androidx.compose.compose.bom").get()))
                 add("androidTestImplementation", platform(libs.findLibrary("org.junit.junit.bom").get()))
-                add("testRuntimeOnly", libs.findLibrary("org.junit.jupiter.junit.jupiter").get())
+                add("testRuntimeOnly", libs.findLibrary("org-junit-vintage-junit-vintage-engine").get())
                 add("androidTestImplementation", libs.findBundle("android-test").get())
             }
         }

@@ -24,32 +24,32 @@ dependencies {
 gradlePlugin {
     plugins {
         register("androidApplication") {
-            id = "android.app"
+            id = "picfind.android.application"
             implementationClass = "AndroidApplicationConventionPlugin"
         }
         register("androidComposeApplication") {
-            id = "android.compose.app"
+            id = "picfind.android.compose.application"
             implementationClass = "AndroidComposeApplicationConventionPlugin"
         }
         register("androidFeature") {
-            id = "android.feature"
+            id = "picfind.android.feature"
             implementationClass = "AndroidFeatureConventionPlugin"
         }
         register("androidHIlt") {
-            id = "android.hilt"
+            id = "picfind.android.hilt"
             implementationClass = "AndroidHiltConventionPlugin"
         }
         register("androidLibrary") {
-            id = "android.lib"
+            id = "picfind.android.library"
             implementationClass = "AndroidLibraryConventionPlugin"
         }
         register("androidTest") {
-            id = "android.test"
+            id = "picfind.android.test"
             implementationClass = "AndroidTestConventionPlugin"
         }
         register("kotlinTest") {
-            id = "kotlin.test"
-            implementationClass = "TestConventionPlugin"
+            id = "picfind.kotlin.test"
+            implementationClass = "KotlinTestConventionPlugin"
         }
     }
 }
