@@ -1,7 +1,7 @@
 package com.houlis.haris.picfind.feature.list.ui.viewmodel
 
 import androidx.compose.runtime.Immutable
-import com.houlis.haris.picfind.core.domain.Picture
+import com.houlis.haris.picfind.data.pictures.api.model.Picture
 import com.houlis.haris.picfind.feature.list.ui.viewmodel.LoadState.Idle
 import com.houlis.haris.picfind.ui.common.mvi.State
 import kotlinx.collections.immutable.ImmutableList

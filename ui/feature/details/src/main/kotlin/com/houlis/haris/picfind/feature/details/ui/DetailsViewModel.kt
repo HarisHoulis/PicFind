@@ -1,6 +1,6 @@
 package com.houlis.haris.picfind.feature.details.ui
 
-import com.houlis.haris.picfind.core.coroutines.CloseableCoroutineScope
+import com.houlis.haris.picfind.domain.coroutines.CloseableCoroutineScope
 import com.houlis.haris.picfind.feature.details.navigation.PicDetailsArg
 import com.houlis.haris.picfind.feature.details.ui.PicDetailsAction.FetchDetailsFor
 import com.houlis.haris.picfind.ui.common.mvi.MviViewModel

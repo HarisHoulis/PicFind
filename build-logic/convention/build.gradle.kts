@@ -47,9 +47,13 @@ gradlePlugin {
             id = "picfind.android.test"
             implementationClass = "AndroidTestConventionPlugin"
         }
-        register("kotlinTest") {
-            id = "picfind.kotlin.test"
-            implementationClass = "KotlinTestConventionPlugin"
+        register("kotlinLibraryTest") {
+            id = "picfind.kotlin.library.test"
+            implementationClass = "KotlinLibraryTestConventionPlugin"
+        }
+        register("kotlinLibrary") {
+            id = "picfind.kotlin.library"
+            implementationClass = "KotlinLibraryConventionPlugin"
         }
     }
 }

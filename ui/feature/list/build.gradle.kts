@@ -13,7 +13,8 @@ android {
 
 dependencies {
     implementation(projects.core.coroutines)
-    implementation(projects.core.domain)
+    implementation(projects.core.design)
+    implementation(projects.data.pictures.picturesApi)
     implementation(projects.ui.common.mvi)
     implementation(projects.ui.common.navigation)
     implementation(projects.ui.common.savedState)

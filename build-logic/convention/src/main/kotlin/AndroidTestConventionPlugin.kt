@@ -4,12 +4,11 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.kotlin
 
-class AndroidTestConventionPlugin : Plugin<Project> {
+internal class AndroidTestConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             with(pluginManager) {
                 apply("org.jetbrains.kotlin.android")
-                apply("picfind.kotlin.test")
             }
 
             dependencies {

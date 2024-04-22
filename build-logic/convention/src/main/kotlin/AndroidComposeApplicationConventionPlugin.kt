@@ -4,7 +4,7 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.getByType
 
-class AndroidComposeApplicationConventionPlugin : Plugin<Project> {
+internal class AndroidComposeApplicationConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             pluginManager.apply("com.android.application")

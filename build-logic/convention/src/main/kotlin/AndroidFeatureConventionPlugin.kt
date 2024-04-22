@@ -10,7 +10,7 @@ import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.kotlin
 import org.gradle.kotlin.dsl.project
 
-class AndroidFeatureConventionPlugin : Plugin<Project> {
+internal class AndroidFeatureConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             with(pluginManager) {

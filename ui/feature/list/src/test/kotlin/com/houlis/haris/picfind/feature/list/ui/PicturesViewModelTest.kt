@@ -1,6 +1,6 @@
 package com.houlis.haris.picfind.feature.list.ui
 
-import com.houlis.haris.picfind.core.domain.PicturesRepositoryContract
+import com.houlis.haris.picfind.data.pictures.api.PicturesRepositoryContract
 import com.houlis.haris.picfind.feature.list.ui.viewmodel.PicturesMiddleware
 import com.houlis.haris.picfind.feature.list.ui.viewmodel.PicturesReducer
 import com.houlis.haris.picfind.feature.list.ui.viewmodel.PicturesState
@@ -107,7 +107,7 @@ internal class PicturesViewModelTest {
         expectThat(savedStates)
             .hasSize(1)
             .hasEntry(PIC_ID_ARG, dummyPicture1().id)
-        expectThat(picturesRepository.retrieve(dummyPicture1().id))
+        expectThat(picturesRepository.retrievePictureWith(dummyPicture1().id))
             .isEqualTo(dummyPicture1())
     }
 }

@@ -1,6 +1,6 @@
 package com.houlis.haris.picfind.ui.common.testutil
 
-import com.houlis.haris.picfind.core.coroutines.CloseableCoroutineScope
+import com.houlis.haris.picfind.domain.coroutines.CloseableCoroutineScope
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.test.TestScope

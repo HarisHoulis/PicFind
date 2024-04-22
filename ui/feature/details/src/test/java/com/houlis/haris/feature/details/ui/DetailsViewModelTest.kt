@@ -41,7 +41,7 @@ internal class DetailsViewModelTest {
         sut.assertStatesFor(
             DetailsState(),
             DetailsState(Loading, null),
-            DetailsState(Loaded, dummyPicture1().image)
+            DetailsState(Loaded, dummyPicture1().largeImage)
         ) {
             fetchDetails()
         }

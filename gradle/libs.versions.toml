@@ -99,6 +99,7 @@ android-test = [
     "androidx-test-ext-junit",
     "androidx-navigation-navigation-testing",
     "io-strikt-strikt-core",
+    "app-cash-turbine-turbine",
 ]
 compose = [
     "androidx-compose-material-material-icons-extended",

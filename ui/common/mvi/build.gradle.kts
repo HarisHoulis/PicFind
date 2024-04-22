@@ -1,7 +1,6 @@
 plugins {
     id("picfind.android.library")
     id("picfind.android.test")
-    id("picfind.kotlin.test")
 }
 
 android {
