@@ -1,7 +1,7 @@
 package com.houlis.haris.picfind.feature.list.ui.viewmodel
 
-import com.houlis.haris.picfind.core.coroutines.CloseableCoroutineScope
-import com.houlis.haris.picfind.core.domain.PicturesRepositoryContract
+import com.houlis.haris.picfind.data.pictures.api.PicturesRepositoryContract
+import com.houlis.haris.picfind.domain.coroutines.CloseableCoroutineScope
 import com.houlis.haris.picfind.ui.common.mvi.MwProvider
 import dagger.Module
 import dagger.Provides

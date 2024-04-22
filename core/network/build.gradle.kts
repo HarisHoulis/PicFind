@@ -2,7 +2,7 @@ plugins {
     id("picfind.android.library")
     id("picfind.android.hilt")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
-    id("picfind.kotlin.test")
+    id("picfind.android.test")
     alias(libs.plugins.org.jetbrains.kotlin.plugin.serialization)
 }
 
@@ -28,17 +28,6 @@ secrets {
 }
 
 dependencies {
-    with(libs) {
-        implementation(projects.core.domain)
-        implementation(projects.core.models)
-        implementation(androidx.datastore.datastore.preferences)
-        implementation(org.jetbrains.kotlinx.kotlinx.coroutines.android)
-        implementation(org.jetbrains.kotlinx.kotlinx.serialization.json)
-        implementation(com.squareup.okhttp3.logging.interceptor)
-        implementation(com.squareup.retrofit2.retrofit)
-        implementation(com.jakewharton.retrofit.retrofit2.kotlinx.serialization.converter)
-        implementation(dev.forkhandles.result4k)
-
-        testImplementation(projects.core.test)
-    }
+    implementation(libs.dev.forkhandles.result4k)
+    implementation(libs.com.squareup.retrofit2.retrofit)
 }

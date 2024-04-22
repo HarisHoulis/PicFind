@@ -2,7 +2,7 @@ package com.houlis.haris.picfind.ui.common.mvi
 
 import androidx.compose.ui.util.fastForEach
 import androidx.lifecycle.ViewModel
-import com.houlis.haris.picfind.core.coroutines.CloseableCoroutineScope
+import com.houlis.haris.picfind.domain.coroutines.CloseableCoroutineScope
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

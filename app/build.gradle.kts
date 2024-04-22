@@ -2,7 +2,6 @@ plugins {
     id("picfind.android.application")
     id("picfind.android.compose.application")
     id("picfind.android.hilt")
-    id("picfind.android.test")
 }
 
 android {
@@ -30,6 +29,7 @@ android {
 }
 
 dependencies {
+    implementation(projects.data.pictures.picturesImpl)
     implementation(projects.ui.common.navigation)
     implementation(projects.ui.feature.list)
     implementation(projects.ui.feature.details)

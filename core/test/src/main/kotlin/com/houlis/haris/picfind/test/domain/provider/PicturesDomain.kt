@@ -1,10 +1,7 @@
 package com.houlis.haris.picfind.test.domain.provider
 
-import com.houlis.haris.picfind.core.domain.Picture
-import com.houlis.haris.picfind.test.data.provider.dummyPictureRaw1
-import com.houlis.haris.picfind.test.data.provider.dummyPictureRaw2
-import com.houlis.haris.picfind.test.data.provider.dummyPictureRaw3
-import com.houlis.haris.picfind.test.data.provider.dummyPictureRaw4
+import com.houlis.haris.picfind.data.pictures.api.model.BasePath
+import com.houlis.haris.picfind.data.pictures.api.model.Picture
 
 const val IMAGE_BASE_URL = "someurl.com"
 
@@ -16,27 +13,27 @@ fun dummyPictures() = listOf(
 fun dummyPicture1() =
     Picture(
         id = "dummyPicture1",
-        image = Picture.Image(IMAGE_BASE_URL, dummyPictureRaw1()),
-        title = Picture.Title("Donat")
+        basePath = BasePath(""),
+        title = "Pic1"
     )
 
 fun dummyPicture2() =
     Picture(
         id = "dummyPicture2",
-        image = Picture.Image(IMAGE_BASE_URL, dummyPictureRaw2()),
-        title = Picture.Title("Donat")
+        basePath = BasePath(""),
+        title = "Pic2"
     )
 
 fun dummyPicture3() =
     Picture(
         id = "dummyPicture3",
-        image = Picture.Image(IMAGE_BASE_URL, dummyPictureRaw3()),
-        title = Picture.Title("Hole")
+        basePath = BasePath(""),
+        title = "Pic3"
     )
 
 fun dummyPicture4() =
     Picture(
         id = "dummyPicture4",
-        image = Picture.Image(IMAGE_BASE_URL, dummyPictureRaw4()),
-        title = Picture.Title("Hole")
+        basePath = BasePath(""),
+        title = "Pic4"
     )

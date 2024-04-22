@@ -19,7 +19,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
-import com.houlis.haris.picfind.core.domain.Picture.Image
 import com.houlis.haris.picfind.feature.details.R
 import com.houlis.haris.picfind.core.design.R as DesignR
 
@@ -39,7 +38,7 @@ internal fun DetailsRoute(
 }
 
 @Composable
-internal fun DetailsScreen(pic: Image, modifier: Modifier = Modifier, onBackClicked: () -> Unit) {
+internal fun DetailsScreen(pic: String, modifier: Modifier = Modifier, onBackClicked: () -> Unit) {
     Column(modifier = modifier) {
         Icon(
             imageVector = Icons.AutoMirrored.Rounded.ArrowBack,
@@ -53,7 +52,7 @@ internal fun DetailsScreen(pic: Image, modifier: Modifier = Modifier, onBackClic
             modifier = modifier.fillMaxSize()
         ) {
             AsyncImage(
-                model = pic.large,
+                model = pic,
                 contentDescription = stringResource(R.string.large_image_ctd),
                 modifier = Modifier
                     .size(dimensionResource(DesignR.dimen.large_image_size))

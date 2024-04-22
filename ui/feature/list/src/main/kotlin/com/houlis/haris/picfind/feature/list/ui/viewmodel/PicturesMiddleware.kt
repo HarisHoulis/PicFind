@@ -1,8 +1,8 @@
 package com.houlis.haris.picfind.feature.list.ui.viewmodel
 
-import com.houlis.haris.picfind.core.coroutines.CloseableCoroutineScope
-import com.houlis.haris.picfind.core.domain.Picture
-import com.houlis.haris.picfind.core.domain.PicturesRepositoryContract
+import com.houlis.haris.picfind.data.pictures.api.PicturesRepositoryContract
+import com.houlis.haris.picfind.data.pictures.api.model.Picture
+import com.houlis.haris.picfind.domain.coroutines.CloseableCoroutineScope
 import com.houlis.haris.picfind.feature.list.ui.viewmodel.PicturesAction.Error
 import com.houlis.haris.picfind.feature.list.ui.viewmodel.PicturesAction.NoResults
 import com.houlis.haris.picfind.feature.list.ui.viewmodel.PicturesAction.OnPictureClicked

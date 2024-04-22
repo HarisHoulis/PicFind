@@ -40,7 +40,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
-import com.houlis.haris.picfind.core.domain.Picture
+import com.houlis.haris.picfind.data.pictures.api.model.Picture
 import com.houlis.haris.picfind.feature.list.R
 import com.houlis.haris.picfind.feature.list.ui.viewmodel.LoadState.Error
 import com.houlis.haris.picfind.feature.list.ui.viewmodel.LoadState.Idle
@@ -147,27 +147,35 @@ private fun Loading(modifier: Modifier = Modifier) {
 }
 
 @Composable
-private fun Pictures(pictures: ImmutableList<Picture>, modifier: Modifier = Modifier, onClick: (Picture) -> Unit) {
+private fun Pictures(
+    pictures: ImmutableList<Picture>,
+    modifier: Modifier = Modifier,
+    onClick: (Picture) -> Unit,
+) {
     LazyColumn(
         contentPadding = PaddingValues(dimensionResource(DesignR.dimen.padding_4x)),
         verticalArrangement = Arrangement.spacedBy(dimensionResource(DesignR.dimen.padding_2x)),
         modifier = modifier
     ) {
-        items(pictures, key = Picture::id) { picture ->
+        items(items = pictures, key = Picture::id) { picture ->
             PictureItem(picture, modifier, onClick)
         }
     }
 }
 
 @Composable
-private fun PictureItem(picture: Picture, modifier: Modifier = Modifier, onClick: (Picture) -> Unit) {
+private fun PictureItem(
+    picture: Picture,
+    modifier: Modifier = Modifier,
+    onClick: (Picture) -> Unit,
+) {
     Row(
         modifier = modifier.clickable {
             onClick(picture)
         }
     ) {
         AsyncImage(
-            model = picture.image.thumbnail,
+            model = picture.thumbnail,
             contentDescription = stringResource(R.string.picture_item_ctd),
             contentScale = ContentScale.Crop,
             modifier = Modifier
@@ -176,7 +184,7 @@ private fun PictureItem(picture: Picture, modifier: Modifier = Modifier, onClick
                 .clip(MaterialTheme.shapes.small)
         )
         Text(
-            text = picture.title.value,
+            text = picture.title,
             maxLines = 2,
             overflow = TextOverflow.Ellipsis,
             modifier = Modifier.align(Alignment.CenterVertically)

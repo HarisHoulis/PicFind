@@ -22,9 +22,8 @@ android {
 }
 
 dependencies {
-    implementation(projects.core.domain)
-    implementation(projects.core.models)
     implementation(projects.core.network)
+    implementation(projects.data.pictures.picturesApi)
 
     implementation(libs.org.jetbrains.kotlinx.kotlinx.coroutines.test)
     implementation(libs.org.jetbrains.kotlinx.kotlinx.serialization.json)

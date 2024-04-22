@@ -8,7 +8,7 @@ import org.gradle.kotlin.dsl.provideDelegate
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-private val PREFERRED_JAVA_VERSION = JavaVersion.VERSION_17
+internal val PREFERRED_JAVA_VERSION = JavaVersion.VERSION_17
 
 internal fun Project.configureKotlinAndroid(commonExtension: CommonExtension<*, *, *, *, *, *>) {
     commonExtension.apply {
