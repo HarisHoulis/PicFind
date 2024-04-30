@@ -19,14 +19,15 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import javax.inject.Inject
 
-internal class PicturesRepository @Inject constructor(
+internal class PicturesRepository
+@Inject
+constructor(
     private val picturesService: PicturesService,
     @ImageBaseUrl
     private val imageBaseUrl: String,
     private val dataStore: DataStore<Preferences>,
     private val json: Json,
 ) : PicturesRepositoryContract {
-
     private val pictureKey = stringPreferencesKey("picture")
 
     override suspend fun searchFor(query: String): Result4k<List<Picture>, Throwable> = safeApiCall {
@@ -47,9 +48,8 @@ internal class PicturesRepository @Inject constructor(
         }
     }
 
-    override suspend fun retrievePictureWith(id: String): Picture =
-        dataStore.data.map { prefs ->
-            val serialized = prefs[pictureKey] ?: throw IllegalArgumentException("Picture with id $id not found!")
-            json.decodeFromString<PictureDataStore>(serialized).toPicture()
-        }.first()
+    override suspend fun retrievePictureWith(id: String): Picture = dataStore.data.map { prefs ->
+        val serialized = prefs[pictureKey] ?: throw IllegalArgumentException("Picture with id $id not found!")
+        json.decodeFromString<PictureDataStore>(serialized).toPicture()
+    }.first()
 }

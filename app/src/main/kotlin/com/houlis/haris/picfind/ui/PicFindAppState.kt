@@ -15,9 +15,7 @@ import com.houlis.haris.picfind.navigation.TopLevelDestination
 import com.houlis.haris.picfind.navigation.TopLevelDestination.PICTURES
 
 @Composable
-fun rememberPicFindAppState(
-    navController: NavHostController = rememberNavController(),
-) = remember(navController) {
+fun rememberPicFindAppState(navController: NavHostController = rememberNavController()) = remember(navController) {
     PicFindAppState(navController)
 }
 

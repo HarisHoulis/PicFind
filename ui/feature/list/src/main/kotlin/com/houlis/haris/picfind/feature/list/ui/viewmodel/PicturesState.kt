@@ -8,7 +8,11 @@ import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 
 internal enum class LoadState {
-    Idle, Loading, Loaded, NoResults, Error,
+    Idle,
+    Loading,
+    Loaded,
+    NoResults,
+    Error,
 }
 
 @Immutable

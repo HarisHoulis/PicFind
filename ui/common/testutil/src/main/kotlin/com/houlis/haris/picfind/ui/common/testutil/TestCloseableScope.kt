@@ -12,7 +12,6 @@ import kotlin.coroutines.CoroutineContext
  */
 class TestCloseableScope(private val scope: CoroutineScope = TestScope(UnconfinedTestDispatcher())) :
     CloseableCoroutineScope {
-
     /**
      * Returns the [coroutineContext] for the passed [scope]
      */

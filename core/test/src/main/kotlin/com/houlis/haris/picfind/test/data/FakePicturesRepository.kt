@@ -18,7 +18,6 @@ import dev.forkhandles.result4k.Success
  * Use one of the [Query] sub-types as a query.
  */
 class FakePicturesRepository : PicturesRepositoryContract {
-
     private var exception: Exception? = null
 
     private var returnEmptyResponse: Boolean = false
@@ -54,10 +53,10 @@ class FakePicturesRepository : PicturesRepositoryContract {
         savedPics[picture.id] = picture
     }
 
-    override suspend fun retrievePictureWith(id: String): Picture =
-        savedPics.getValue(id)
+    override suspend fun retrievePictureWith(id: String): Picture = savedPics.getValue(id)
 
     enum class Query(val text: String) {
-        Query1("donut"), Query2("hole")
+        Query1("donut"),
+        Query2("hole"),
     }
 }

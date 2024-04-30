@@ -16,11 +16,7 @@ import com.houlis.haris.picfind.ui.PicFindAppState
  * within each route is handled using state and Back Handlers.
  */
 @Composable
-fun PicFindNavHost(
-    appState: PicFindAppState,
-    modifier: Modifier = Modifier,
-    startDestination: String = PICTURES_ROUTE,
-) {
+fun PicFindNavHost(appState: PicFindAppState, modifier: Modifier = Modifier, startDestination: String = PICTURES_ROUTE) {
     val navController = appState.navController
     NavHost(
         navController = navController,

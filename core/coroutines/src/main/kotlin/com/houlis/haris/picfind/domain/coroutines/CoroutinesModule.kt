@@ -11,7 +11,5 @@ import javax.inject.Singleton
 internal interface CoroutinesModule {
     @Binds
     @Singleton
-    fun bindCloseableCoroutineScope(
-        closeableCoroutineScope: ProdCloseableCoroutineScope,
-    ): CloseableCoroutineScope
+    fun bindCloseableCoroutineScope(closeableCoroutineScope: ProdCloseableCoroutineScope): CloseableCoroutineScope
 }

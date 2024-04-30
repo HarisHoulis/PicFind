@@ -29,7 +29,6 @@ annotation class ImageBaseUrl
 @Module
 @InstallIn(SingletonComponent::class)
 internal object NetworkModule {
-
     private const val BASE_URL = "https://api.flickr.com/services/rest/"
 
     private val mediaType = "application/json".toMediaType()

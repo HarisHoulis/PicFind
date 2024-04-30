@@ -1,4 +1,4 @@
-val ktlintVersion = "0.48.2"
+val ktlintVersion = "1.2.1"
 
 initscript {
     val spotlessVersion = "6.25.0"
@@ -19,7 +19,11 @@ rootProject {
             kotlin {
                 target("**/*.kt")
                 targetExclude("**/build/**/*.kt")
-                ktlint(ktlintVersion)
+                ktlint(ktlintVersion).editorConfigOverride(
+                    mapOf(
+                        "android" to "true",
+                    )
+                )
             }
             format("kts") {
                 target("**/*.kts")

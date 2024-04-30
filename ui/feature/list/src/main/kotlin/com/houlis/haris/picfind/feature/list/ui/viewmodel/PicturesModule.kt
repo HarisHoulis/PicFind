@@ -24,15 +24,14 @@ internal object PicturesModule {
         repository: PicturesRepositoryContract,
         debounce: Duration,
         scope: CloseableCoroutineScope,
-    ): MwProvider<PicturesState, PicturesAction> =
-        MwProvider { dispatcher ->
-            listOf(
-                PicturesMiddleware(
-                    repository = repository,
-                    inputDebounce = debounce,
-                    dispatcher = dispatcher,
-                    scope = scope
-                )
+    ): MwProvider<PicturesState, PicturesAction> = MwProvider { dispatcher ->
+        listOf(
+            PicturesMiddleware(
+                repository = repository,
+                inputDebounce = debounce,
+                dispatcher = dispatcher,
+                scope = scope
             )
-        }
+        )
+    }
 }

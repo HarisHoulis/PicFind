@@ -21,6 +21,12 @@
             ],
             "automerge": true,
             "platformAutomerge": true
+        },
+        {
+            "matchPackageNames": [
+                "com.pinterest.ktlint:ktlint-cli"
+            ],
+            "ignoreUnstable": false
         }
     ]
 }

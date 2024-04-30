@@ -17,7 +17,9 @@ import kotlin.coroutines.CoroutineContext
  */
 interface CloseableCoroutineScope : Closeable, CoroutineScope
 
-internal class ProdCloseableCoroutineScope @Inject constructor(dispatcherProvider: DispatcherProvider) :
+internal class ProdCloseableCoroutineScope
+@Inject
+constructor(dispatcherProvider: DispatcherProvider) :
     CloseableCoroutineScope {
     /** @{inheritDoc} */
     override val coroutineContext: CoroutineContext = SupervisorJob() + dispatcherProvider.mainImmediate

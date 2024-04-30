@@ -5,7 +5,6 @@ import kotlin.coroutines.CoroutineContext
 
 /** Provides the [CoroutineDispatcher]s to use in the app. */
 interface DispatcherProvider {
-
     /** [CoroutineDispatcher] for CPU bound tasks. */
     val default: CoroutineContext
 

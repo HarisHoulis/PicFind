@@ -13,18 +13,15 @@ import dagger.hilt.android.scopes.ViewModelScoped
 @Module
 @InstallIn(ViewModelComponent::class)
 internal object SavedStateModule {
+    @ViewModelScoped
+    @Provides
+    fun providesSaveStateHandle(savedStateHandle: SavedStateHandle): SaveState<String> = SaveState { key, value ->
+        savedStateHandle[key] = value
+    }
 
     @ViewModelScoped
     @Provides
-    fun providesSaveStateHandle(savedStateHandle: SavedStateHandle): SaveState<String> =
-        SaveState { key, value ->
-            savedStateHandle[key] = value
-        }
-
-    @ViewModelScoped
-    @Provides
-    fun providesReadStateHandle(savedStateHandle: SavedStateHandle): ReadState<String> =
-        ReadState { key ->
-            checkNotNull(savedStateHandle[key]) as String
-        }
+    fun providesReadStateHandle(savedStateHandle: SavedStateHandle): ReadState<String> = ReadState { key ->
+        checkNotNull(savedStateHandle[key]) as String
+    }
 }

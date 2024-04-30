@@ -10,16 +10,18 @@ data class Picture(
     val title: String,
 ) {
     val thumbnail
-        get() = buildString {
-            append(basePath)
-            append(UNDERSCORE)
-            append(THUMBNAIL_SUFFIX)
-            append(JPG_EXT)
-        }
+        get() =
+            buildString {
+                append(basePath)
+                append(UNDERSCORE)
+                append(THUMBNAIL_SUFFIX)
+                append(JPG_EXT)
+            }
 
     val largeImage
-        get() = buildString {
-            append(basePath)
-            append(JPG_EXT)
-        }
+        get() =
+            buildString {
+                append(basePath)
+                append(JPG_EXT)
+            }
 }

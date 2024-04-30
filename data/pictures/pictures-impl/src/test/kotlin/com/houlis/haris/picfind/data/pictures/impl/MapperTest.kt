@@ -7,7 +7,6 @@ import strikt.api.expectThat
 import strikt.assertions.isEqualTo
 
 internal class MapperTest {
-
     private companion object {
         private const val IMAGE_BASE_URL = "https://some.url.com/"
     }

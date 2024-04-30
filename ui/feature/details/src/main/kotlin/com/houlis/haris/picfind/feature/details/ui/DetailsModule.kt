@@ -18,10 +18,9 @@ internal object DetailsModule {
     fun providesMiddlewares(
         repository: PicturesRepositoryContract,
         scope: CloseableCoroutineScope,
-    ): MwProvider<DetailsState, PicDetailsAction> =
-        MwProvider { dispatcher ->
-            listOf(
-                DetailsMiddleware(repository, dispatcher, scope)
-            )
-        }
+    ): MwProvider<DetailsState, PicDetailsAction> = MwProvider { dispatcher ->
+        listOf(
+            DetailsMiddleware(repository, dispatcher, scope)
+        )
+    }
 }

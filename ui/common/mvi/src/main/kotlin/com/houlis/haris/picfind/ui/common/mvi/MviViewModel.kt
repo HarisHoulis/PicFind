@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-private const val BufferSize = 64
+private const val BUFFER_SIZE = 64
 
 /**
  * Responsible for providing a list of [Middleware]s
@@ -44,7 +44,7 @@ open class MviViewModel<S : State, A : Action>(
     private val middlewares: List<Middleware<S, A>>
         get() = middlewaresProvider(this)
 
-    private val actions = MutableSharedFlow<A>(extraBufferCapacity = BufferSize)
+    private val actions = MutableSharedFlow<A>(extraBufferCapacity = BUFFER_SIZE)
 
     private val _state: MutableStateFlow<S> = MutableStateFlow(initialState)
 

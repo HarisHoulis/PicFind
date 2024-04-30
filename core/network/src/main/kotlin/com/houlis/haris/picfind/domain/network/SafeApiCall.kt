@@ -8,9 +8,7 @@ import java.io.IOException
 import kotlin.coroutines.cancellation.CancellationException
 
 /** Wraps a retrofit call and returns an [Result] with the response or error code. */
-suspend fun <T> safeApiCall(
-    block: suspend () -> retrofit2.Response<T>,
-): Result<T, Exception> = try {
+suspend fun <T> safeApiCall(block: suspend () -> retrofit2.Response<T>): Result<T, Exception> = try {
     val response = block()
     if (response.isSuccessful) {
         val body = response.body()

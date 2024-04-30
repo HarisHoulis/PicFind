@@ -6,9 +6,8 @@ import com.houlis.haris.picfind.ui.common.mvi.Reducer
 import javax.inject.Inject
 
 internal class DetailsReducer @Inject constructor() : Reducer<DetailsState, PicDetailsAction> {
-    override fun reduce(state: DetailsState, action: PicDetailsAction): DetailsState =
-        when (action) {
-            is DetailsFetched -> state.copy(loadState = LoadState.Loaded, pic = action.image)
-            is FetchDetailsFor -> state.copy(loadState = LoadState.Loading)
-        }
+    override fun reduce(state: DetailsState, action: PicDetailsAction): DetailsState = when (action) {
+        is DetailsFetched -> state.copy(loadState = LoadState.Loaded, pic = action.image)
+        is FetchDetailsFor -> state.copy(loadState = LoadState.Loading)
+    }
 }

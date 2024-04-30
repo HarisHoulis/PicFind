@@ -13,7 +13,6 @@ private const val ACTION_FLOW_EXTRA_BUFFER_CAPACITY = 64
  * @param A The type of actions that can be dispatched.
  */
 class TestDispatcher<A : Action> : Dispatcher<A> {
-
     /**
      * The [MutableSharedFlow] used to emit the dispatched actions to observers.
      */

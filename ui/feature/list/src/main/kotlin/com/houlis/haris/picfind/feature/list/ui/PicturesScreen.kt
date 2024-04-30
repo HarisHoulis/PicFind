@@ -147,11 +147,7 @@ private fun Loading(modifier: Modifier = Modifier) {
 }
 
 @Composable
-private fun Pictures(
-    pictures: ImmutableList<Picture>,
-    modifier: Modifier = Modifier,
-    onClick: (Picture) -> Unit,
-) {
+private fun Pictures(pictures: ImmutableList<Picture>, modifier: Modifier = Modifier, onClick: (Picture) -> Unit) {
     LazyColumn(
         contentPadding = PaddingValues(dimensionResource(DesignR.dimen.padding_4x)),
         verticalArrangement = Arrangement.spacedBy(dimensionResource(DesignR.dimen.padding_2x)),
@@ -164,11 +160,7 @@ private fun Pictures(
 }
 
 @Composable
-private fun PictureItem(
-    picture: Picture,
-    modifier: Modifier = Modifier,
-    onClick: (Picture) -> Unit,
-) {
+private fun PictureItem(picture: Picture, modifier: Modifier = Modifier, onClick: (Picture) -> Unit) {
     Row(
         modifier = modifier.clickable {
             onClick(picture)
