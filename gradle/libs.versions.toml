@@ -2,7 +2,7 @@
 androidx-activity-activity-compose-version = "1.9.0"
 androidx-compose-compose-bom-version = "2024.04.01"
 androidx-compose-material3-material3-version = "1.2.1"
-androidx-datatore-datatore-preferences-version = "1.1.0"
+androidx-datatore-datatore-preferences-version = "1.1.1"
 androidx-hilt-hilt-navigation-compose-version = "1.2.0"
 androidx-kotlin-compose-compiler-version = "1.5.11"
 androidx-lifecycle-version = "2.7.0"
