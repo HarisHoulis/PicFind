@@ -28,7 +28,7 @@ junit-junit-version = "4.13.2"
 org-jetbrains-kotlin-version = "2.1.10"
 org-jetbrains-kotlinx-kotlinx-collections-immutable-version = "0.3.8"
 org-jetbrains-kotlinx-kotlinx-coroutines-version = "1.9.0"
-org-jetbrains-kotlinx-kotlinx-serialization-json-version = "1.7.3"
+org-jetbrains-kotlinx-kotlinx-serialization-json-version = "1.6.3"
 org-junit-junit-bom-version = "5.11.4"
 androidx-compose-ui-ui-test-junit4-android-version = "1.7.8"
 
@@ -89,6 +89,7 @@ org-jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "org
 org-jetbrains-kotlin-plugin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "org-jetbrains-kotlin-version" }
 org-jetbrains-kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "org-jetbrains-kotlin-version" }
 com-google-android-libraries-mapsplatform-secrets-gradle-plugin = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "com-google-android-libraries-mapsplatform-secrets-gradle-plugin-version" }
+
 [bundles]
 android-test = [
     "app-cash-turbine-turbine",
