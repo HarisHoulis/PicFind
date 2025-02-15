@@ -10,11 +10,6 @@ internal fun Project.configureAndroidCompose(commonExtension: CommonExtension<*,
             compose = true
         }
 
-        composeOptions {
-            kotlinCompilerExtensionVersion =
-                project.libs.findVersion("androidx.kotlin.compose.compiler.version").get().toString()
-        }
-
         testOptions {
             unitTests.all {
                 it.useJUnitPlatform()
