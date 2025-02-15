@@ -31,6 +31,7 @@ org-jetbrains-kotlinx-kotlinx-collections-immutable-version = "0.3.8"
 org-jetbrains-kotlinx-kotlinx-coroutines-version = "1.9.0"
 org-jetbrains-kotlinx-kotlinx-serialization-json-version = "1.6.3"
 org-junit-junit-bom-version = "5.11.4"
+androidx-compose-ui-ui-test-junit4-android-version = "1.7.8"
 
 [libraries]
 androidx-activity-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-activity-compose-version" }
@@ -40,6 +41,7 @@ androidx-compose-material3-material3 = { module = "androidx.compose.material3:ma
 androidx-compose-runtime-runtime = { module = "androidx.compose.runtime:runtime" }
 androidx-compose-ui-ui = { module = "androidx.compose.ui:ui" }
 androidx-compose-ui-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
+androidx-compose-ui-ui-test-junit4-android = { module = "androidx.compose.ui:ui-test-junit4-android", version.ref = "androidx-compose-ui-ui-test-junit4-android-version" }
 androidx-compose-ui-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 androidx-compose-ui-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 androidx-compose-ui-ui-util = { module = "androidx.compose.ui:ui-util" }
@@ -90,17 +92,18 @@ com-google-android-libraries-mapsplatform-secrets-gradle-plugin = { id = "com.go
 
 [bundles]
 android-test = [
-    "junit-junit",
-    "org-junit-jupiter-junit-jupiter",
+    "app-cash-turbine-turbine",
     "androidx-compose-ui-ui-test-junit4",
+    "androidx-compose-ui-ui-test-junit4-android",
+    "androidx-navigation-navigation-testing",
     "androidx-test-core",
+    "androidx-test-ext-junit",
     "androidx-test-rules",
     "androidx-test-runner",
     "com-google-dagger-hilt-android-testing",
-    "androidx-test-ext-junit",
-    "androidx-navigation-navigation-testing",
     "io-strikt-strikt-core",
-    "app-cash-turbine-turbine",
+    "junit-junit",
+    "org-junit-jupiter-junit-jupiter",
 ]
 compose = [
     "androidx-compose-material-material-icons-extended",

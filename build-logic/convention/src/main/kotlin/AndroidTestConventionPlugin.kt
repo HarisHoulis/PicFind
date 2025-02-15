@@ -19,10 +19,10 @@ internal class AndroidTestConventionPlugin : Plugin<Project> {
                 add("testImplementation", platform(libs.findLibrary("androidx.compose.compose.bom").get()))
                 add("testImplementation", libs.findBundle("android-test").get())
 
-                add("androidTestImplementation", kotlin("test"))
-                add("androidTestImplementation", platform(libs.findLibrary("androidx.compose.compose.bom").get()))
-                add("androidTestImplementation", platform(libs.findLibrary("org.junit.junit.bom").get()))
                 add("testRuntimeOnly", libs.findLibrary("org-junit-vintage-junit-vintage-engine").get())
+                add("androidTestImplementation", kotlin("test"))
+                add("androidTestImplementation", platform(libs.findLibrary("org.junit.junit.bom").get()))
+                add("androidTestImplementation", platform(libs.findLibrary("androidx.compose.compose.bom").get()))
                 add("androidTestImplementation", libs.findBundle("android-test").get())
             }
         }

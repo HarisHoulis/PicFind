@@ -2,6 +2,7 @@ plugins {
     id("picfind.android.application")
     id("picfind.android.compose.application")
     id("picfind.android.hilt")
+    id("picfind.android.test")
 }
 
 android {
