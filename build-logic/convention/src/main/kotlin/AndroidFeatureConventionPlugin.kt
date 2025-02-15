@@ -16,6 +16,7 @@ internal class AndroidFeatureConventionPlugin : Plugin<Project> {
             with(pluginManager) {
                 apply("picfind.android.library")
                 apply("picfind.android.hilt")
+                apply(libs.findPlugin("org.jetbrains.kotlin.plugin.compose").get().get().pluginId)
             }
 
             extensions.configure<LibraryExtension> {
