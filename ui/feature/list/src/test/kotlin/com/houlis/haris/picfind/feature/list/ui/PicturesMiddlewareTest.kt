@@ -11,7 +11,6 @@ import com.houlis.haris.picfind.test.data.FakePicturesRepository.Query.Query1
 import com.houlis.haris.picfind.test.data.FakePicturesRepository.Query.Query2
 import com.houlis.haris.picfind.test.domain.provider.dummyPicture3
 import com.houlis.haris.picfind.test.domain.provider.dummyPicture4
-import com.houlis.haris.picfind.ui.common.testutil.TestCloseableScope
 import com.houlis.haris.picfind.ui.common.testutil.TestDispatcher
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.coroutines.test.TestScope
@@ -25,7 +24,6 @@ import java.time.Duration
 internal class PicturesMiddlewareTest {
 
     private val coroutineScope = TestScope(UnconfinedTestDispatcher())
-    private val closeableScope = TestCloseableScope(coroutineScope.backgroundScope)
 
     private val testDispatcher = TestDispatcher<PicturesAction>()
 
@@ -33,7 +31,7 @@ internal class PicturesMiddlewareTest {
         repository = FakePicturesRepository(),
         inputDebounce = debounce,
         dispatcher = testDispatcher,
-        scope = closeableScope
+        scope = coroutineScope.backgroundScope
     )
 
     @Test

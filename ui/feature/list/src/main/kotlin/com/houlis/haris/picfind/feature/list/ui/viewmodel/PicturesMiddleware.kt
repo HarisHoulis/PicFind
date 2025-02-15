@@ -2,7 +2,6 @@ package com.houlis.haris.picfind.feature.list.ui.viewmodel
 
 import com.houlis.haris.picfind.data.pictures.api.PicturesRepositoryContract
 import com.houlis.haris.picfind.data.pictures.api.model.Picture
-import com.houlis.haris.picfind.domain.coroutines.CloseableCoroutineScope
 import com.houlis.haris.picfind.feature.list.ui.viewmodel.PicturesAction.Error
 import com.houlis.haris.picfind.feature.list.ui.viewmodel.PicturesAction.NoResults
 import com.houlis.haris.picfind.feature.list.ui.viewmodel.PicturesAction.OnPictureClicked
@@ -14,6 +13,7 @@ import com.houlis.haris.picfind.ui.common.mvi.Middleware
 import dev.forkhandles.result4k.Failure
 import dev.forkhandles.result4k.Success
 import kotlinx.collections.immutable.toImmutableList
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.time.debounce
@@ -26,8 +26,8 @@ internal class PicturesMiddleware(
     private val inputDebounce: Duration,
     private val isValid: QueryValidator = { length >= 3 },
     dispatcher: Dispatcher<PicturesAction>,
-    scope: CloseableCoroutineScope,
-) : Middleware<PicturesState, PicturesAction>(dispatcher, scope) {
+    scope: CoroutineScope,
+) : Middleware<PicturesState, PicturesAction>(dispatcher) {
 
     private val searchFlow = MutableStateFlow("")
 

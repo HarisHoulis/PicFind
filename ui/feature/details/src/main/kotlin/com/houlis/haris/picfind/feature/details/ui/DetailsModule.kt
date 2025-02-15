@@ -1,7 +1,6 @@
 package com.houlis.haris.picfind.feature.details.ui
 
 import com.houlis.haris.picfind.data.pictures.api.PicturesRepositoryContract
-import com.houlis.haris.picfind.domain.coroutines.CloseableCoroutineScope
 import com.houlis.haris.picfind.ui.common.mvi.MwProvider
 import dagger.Module
 import dagger.Provides
@@ -15,12 +14,10 @@ internal object DetailsModule {
 
     @ViewModelScoped
     @Provides
-    fun providesMiddlewares(
-        repository: PicturesRepositoryContract,
-        scope: CloseableCoroutineScope,
-    ): MwProvider<DetailsState, PicDetailsAction> = MwProvider { dispatcher ->
-        listOf(
-            DetailsMiddleware(repository, dispatcher, scope)
-        )
-    }
+    fun providesMiddlewares(repository: PicturesRepositoryContract): MwProvider<DetailsState, PicDetailsAction> =
+        MwProvider { dispatcher ->
+            listOf(
+                DetailsMiddleware(repository, dispatcher)
+            )
+        }
 }

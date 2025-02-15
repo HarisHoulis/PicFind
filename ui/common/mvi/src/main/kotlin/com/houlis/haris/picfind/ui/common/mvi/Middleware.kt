@@ -1,19 +1,11 @@
 package com.houlis.haris.picfind.ui.common.mvi
 
-import timber.log.Timber
-import java.io.Closeable
-import java.io.IOException
-
 /**
  * Handles asynchronous [Action] processing in the MVI framework
  *
- * @param closeables A vararg of [Closeable] objects that will be closed when this [Middleware] is destroyed.
+ * @param dispatcher The [Dispatcher] to dispatch [Action]s to
  */
-abstract class Middleware<S : State, A : Action>(
-    private val dispatcher: Dispatcher<A>,
-    vararg closeables: Closeable,
-) {
-    private val closeables: Set<Closeable> = setOf(*closeables)
+abstract class Middleware<S : State, A : Action>(private val dispatcher: Dispatcher<A>) {
 
     /**
      * Processes the [Action].
@@ -24,14 +16,4 @@ abstract class Middleware<S : State, A : Action>(
     abstract suspend fun process(state: S, action: A)
 
     protected fun dispatch(action: A) = dispatcher.dispatch(action)
-
-    internal fun onCleared() {
-        closeables.forEach { closeable ->
-            try {
-                closeable.close()
-            } catch (ex: IOException) {
-                Timber.e(ex, "Exception closing closeable: $closeable")
-            }
-        }
-    }
 }
