@@ -1,14 +1,13 @@
 package com.houlis.haris.picfind
 
 import com.android.build.api.dsl.CommonExtension
-import org.gradle.api.JavaVersion
 import org.gradle.api.Project
+import org.gradle.api.plugins.JavaPluginExtension
+import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.provideDelegate
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
-internal val PREFERRED_JAVA_VERSION = JavaVersion.VERSION_21
 
 internal fun Project.configureKotlinAndroid(commonExtension: CommonExtension<*, *, *, *, *, *>) {
     commonExtension.apply {
@@ -16,12 +15,6 @@ internal fun Project.configureKotlinAndroid(commonExtension: CommonExtension<*, 
 
         defaultConfig {
             minSdk = 21
-        }
-
-        compileOptions {
-            sourceCompatibility = PREFERRED_JAVA_VERSION
-            targetCompatibility = PREFERRED_JAVA_VERSION
-            isCoreLibraryDesugaringEnabled = true
         }
 
         testOptions {
@@ -32,21 +25,20 @@ internal fun Project.configureKotlinAndroid(commonExtension: CommonExtension<*, 
                 }
             }
         }
-
-        dependencies {
-            add("coreLibraryDesugaring", libs.findLibrary("com.android.tools.desugar.jdk.libs").get())
-            add("implementation", libs.findLibrary("org.jetbrains.kotlinx.kotlinx.collections.immutable").get())
-        }
-
-        configureKotlin()
     }
+
+    dependencies {
+        add("coreLibraryDesugaring", libs.findLibrary("com.android.tools.desugar.jdk.libs").get())
+        add("implementation", libs.findLibrary("org.jetbrains.kotlinx.kotlinx.collections.immutable").get())
+    }
+
+    configureKotlin()
 }
 
 private fun Project.configureKotlin() {
     // Use withType to workaround https://youtrack.jetbrains.com/issue/KT-55947
     tasks.withType<KotlinCompile>().configureEach {
         kotlinOptions {
-            jvmTarget = PREFERRED_JAVA_VERSION.toString()
             // Treat all Kotlin warnings as errors (disabled by default)
             // Override by setting warningsAsErrors=true in your ~/.gradle/gradle.properties
             val warningsAsErrors: String? by project
@@ -57,5 +49,9 @@ private fun Project.configureKotlin() {
                 "-opt-in=kotlinx.coroutines.FlowPreview",
             )
         }
+    }
+
+    extensions.configure<JavaPluginExtension> {
+        configureJavaVersion(this@configureKotlin)
     }
 }

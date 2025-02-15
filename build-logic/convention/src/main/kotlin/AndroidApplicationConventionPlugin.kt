@@ -16,7 +16,7 @@ internal class AndroidApplicationConventionPlugin : Plugin<Project> {
             extensions.configure<ApplicationExtension> {
                 configureKotlinAndroid(this)
                 configurePackagingResources()
-                defaultConfig.targetSdk = 34
+                defaultConfig.targetSdk = 35
             }
         }
     }
