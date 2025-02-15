@@ -17,6 +17,10 @@ internal fun Project.configureKotlinAndroid(commonExtension: CommonExtension<*, 
             minSdk = 21
         }
 
+        compileOptions {
+            isCoreLibraryDesugaringEnabled = true
+        }
+
         testOptions {
             unitTests.isIncludeAndroidResources = true
             unitTests.all {
