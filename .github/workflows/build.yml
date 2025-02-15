@@ -31,11 +31,8 @@ jobs:
                 with:
                     gradle-home-cache-cleanup: true
 
-            -   name: Apply formatting if failed
-                run: ./gradlew spotlessApply --init-script gradle/init.gradle.kts --no-configuration-cache
-            -   uses: stefanzweifel/git-auto-commit-action@v5
-                with:
-                    commit_message: Apply Spotless
+            -   name: Check spotless
+                run: ./gradlew spotlessCheck --init-script gradle/init.gradle.kts --no-configuration-cache
 
             -   name: Check lint
                 run: ./gradlew lintDebug
