@@ -1,13 +1,13 @@
 package com.houlis.haris.picfind.feature.list.ui.viewmodel
 
 import com.houlis.haris.picfind.data.pictures.api.PicturesRepositoryContract
-import com.houlis.haris.picfind.domain.coroutines.CloseableCoroutineScope
 import com.houlis.haris.picfind.ui.common.mvi.MwProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
+import kotlinx.coroutines.CoroutineScope
 import java.time.Duration
 
 @Module
@@ -23,7 +23,7 @@ internal object PicturesModule {
     fun providesMiddlewares(
         repository: PicturesRepositoryContract,
         debounce: Duration,
-        scope: CloseableCoroutineScope,
+        scope: CoroutineScope,
     ): MwProvider<PicturesState, PicturesAction> = MwProvider { dispatcher ->
         listOf(
             PicturesMiddleware(

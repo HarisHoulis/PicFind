@@ -2,7 +2,7 @@ package com.houlis.haris.picfind.ui.common.mvi
 
 import androidx.compose.ui.util.fastForEach
 import androidx.lifecycle.ViewModel
-import com.houlis.haris.picfind.domain.coroutines.CloseableCoroutineScope
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -29,17 +29,17 @@ fun interface MwProvider<S : State, A : Action> {
  *
  * @param S - The [State] managed by this [ViewModel]
  * @param A - the [Action]s this [ViewModel] handles
- * @param closeableScope - a [CloseableCoroutineScope] to launch coroutines on
+ * @param coroutineScope - a [CloseableCoroutineScope] to launch coroutines on
  * @param reducer - the [Reducer] that generates new state from the current [State] and [Action]s
  * @param middlewaresProvider - provides a list of [Middleware]s to handle [Action]s
  * @param initialState - the initial [State]
  */
 open class MviViewModel<S : State, A : Action>(
-    private val closeableScope: CloseableCoroutineScope,
+    private val coroutineScope: CoroutineScope,
     private val reducer: Reducer<S, A>,
     private val middlewaresProvider: MwProvider<S, A> = MwProvider { emptyList() },
     initialState: S,
-) : ViewModel(closeableScope), Dispatcher<A> {
+) : ViewModel(viewModelScope = coroutineScope), Dispatcher<A> {
 
     private val middlewares: List<Middleware<S, A>>
         get() = middlewaresProvider(this)
@@ -52,7 +52,7 @@ open class MviViewModel<S : State, A : Action>(
     var state: StateFlow<S> = _state.asStateFlow()
 
     init {
-        closeableScope.launch {
+        coroutineScope.launch {
             actions
                 .onEach { action ->
                     middlewares.fastForEach { middleware ->
@@ -61,7 +61,7 @@ open class MviViewModel<S : State, A : Action>(
                 }
                 .collect()
         }
-        closeableScope.launch {
+        coroutineScope.launch {
             actions.collect { action ->
                 _state.update { currentState ->
                     reducer.reduce(currentState, action)
@@ -71,13 +71,8 @@ open class MviViewModel<S : State, A : Action>(
     }
 
     override fun dispatch(action: A) {
-        closeableScope.launch {
+        coroutineScope.launch {
             actions.emit(action)
         }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        middlewares.fastForEach { middleware -> middleware.onCleared() }
     }
 }

@@ -1,7 +1,6 @@
 package com.houlis.haris.picfind.feature.details.ui
 
 import com.houlis.haris.picfind.data.pictures.api.PicturesRepositoryContract
-import com.houlis.haris.picfind.domain.coroutines.CloseableCoroutineScope
 import com.houlis.haris.picfind.feature.details.ui.PicDetailsAction.DetailsFetched
 import com.houlis.haris.picfind.feature.details.ui.PicDetailsAction.FetchDetailsFor
 import com.houlis.haris.picfind.ui.common.mvi.Dispatcher
@@ -10,8 +9,7 @@ import com.houlis.haris.picfind.ui.common.mvi.Middleware
 internal class DetailsMiddleware(
     private val repository: PicturesRepositoryContract,
     dispatcher: Dispatcher<PicDetailsAction>,
-    scope: CloseableCoroutineScope,
-) : Middleware<DetailsState, PicDetailsAction>(dispatcher, scope) {
+) : Middleware<DetailsState, PicDetailsAction>(dispatcher) {
 
     override suspend fun process(state: DetailsState, action: PicDetailsAction) {
         when (action) {

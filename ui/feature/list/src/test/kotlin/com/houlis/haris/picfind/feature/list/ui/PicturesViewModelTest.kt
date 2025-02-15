@@ -9,8 +9,8 @@ import com.houlis.haris.picfind.test.data.FakePicturesRepository
 import com.houlis.haris.picfind.test.data.FakePicturesRepository.Query.Query1
 import com.houlis.haris.picfind.test.domain.provider.dummyPicture1
 import com.houlis.haris.picfind.ui.common.savedstate.SaveState
-import com.houlis.haris.picfind.ui.common.testutil.TestCloseableScope
 import com.houlis.haris.picfind.ui.common.testutil.assertStatesFor
+import com.houlis.haris.picfind.ui.common.testutil.testScope
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
@@ -27,7 +27,7 @@ internal class PicturesViewModelTest {
         private const val PIC_ID_ARG = "PIC_ID"
     }
 
-    private val scope = TestCloseableScope()
+    private val scope = testScope
 
     private val savedStates = mutableMapOf<String, String>()
     private val saveState = SaveState(savedStates::put)
@@ -37,7 +37,7 @@ internal class PicturesViewModelTest {
     private fun sut(repo: PicturesRepositoryContract = picturesRepository()) = PicturesViewModel(
         picIdArg = PIC_ID_ARG,
         saveState = saveState,
-        scope = scope,
+        scope = scope.backgroundScope,
         reducer = PicturesReducer(),
         mwProvider = { dispatcher ->
             listOf(
@@ -45,14 +45,14 @@ internal class PicturesViewModelTest {
                     repository = repo,
                     inputDebounce = Duration.ofMillis(0),
                     dispatcher = dispatcher,
-                    scope = scope
+                    scope = scope.backgroundScope
                 )
             )
         }
     )
 
     @Test
-    fun `loads pictures`() {
+    fun `loads pictures`() = scope.runTest {
         sut().assertStatesFor(PicturesState(), expectedLoadingState, expectedLoadedState) {
             searchFor(Query1.text)
         }
@@ -60,25 +60,26 @@ internal class PicturesViewModelTest {
 
     @ParameterizedTest
     @ValueSource(strings = ["", " ", "a", "ab"])
-    fun `ignores invalid query`(query: String) {
+    fun `ignores invalid query`(query: String) = scope.runTest {
         sut().assertStatesFor(PicturesState(), expectedLoadingState) {
             searchFor(query)
         }
     }
 
     @Test
-    fun `reports error when failing to load pictures`() {
-        sut(picturesRepository().apply { throwException() }).assertStatesFor(
-            PicturesState(),
-            expectedLoadingState,
-            expectedErrorState
-        ) {
-            searchFor(Query1.text)
-        }
+    fun `reports error when failing to load pictures`() = scope.runTest {
+        sut(picturesRepository().apply(FakePicturesRepository::throwException))
+            .assertStatesFor(
+                PicturesState(),
+                expectedLoadingState,
+                expectedErrorState
+            ) {
+                searchFor(Query1.text)
+            }
     }
 
     @Test
-    fun `reports no results`() {
+    fun `reports no results`() = scope.runTest {
         sut(picturesRepository().apply { setEmptyResponse() }).assertStatesFor(
             PicturesState(),
             expectedLoadingState,
@@ -89,7 +90,7 @@ internal class PicturesViewModelTest {
     }
 
     @Test
-    fun `navigates to details screen`() = runTest {
+    fun `navigates to details screen`() = scope.runTest {
         val picturesRepository = picturesRepository()
 
         sut(picturesRepository).assertStatesFor(

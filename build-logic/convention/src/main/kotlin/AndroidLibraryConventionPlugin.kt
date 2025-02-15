@@ -18,7 +18,7 @@ internal class AndroidLibraryConventionPlugin : Plugin<Project> {
             extensions.configure<LibraryExtension> {
                 configureKotlinAndroid(this)
                 configurePackagingResources()
-                compileSdk = 34
+                compileSdk = 35
             }
 
             dependencies {

@@ -4,6 +4,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.CoroutineScope
 import javax.inject.Singleton
 
 @Module
@@ -11,5 +12,5 @@ import javax.inject.Singleton
 internal interface CoroutinesModule {
     @Binds
     @Singleton
-    fun bindCloseableCoroutineScope(closeableCoroutineScope: ProdCloseableCoroutineScope): CloseableCoroutineScope
+    fun bindCoroutineScope(coroutineScope: ProdCoroutineScope): CoroutineScope
 }
